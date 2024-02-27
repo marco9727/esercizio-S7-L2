@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S7/L2 es.1</title>
+  </head>
+  <body>
+    <h2>Form di Registrazione</h2>
+
+    <form id="registrationForm">
+      <p>Valore precedentemente salvato: <span id="savedValue"></span></p>
+      <label for="nameInput">Nome:</label>
+      <input type="text" id="nameInput" name="name" required />
+
+      <button type="button" onclick="saveToLocalStorage()">Salva</button>
+      <button type="button" onclick="removeFromLocalStorage()">Rimuovi</button>
+    </form>
+
+    <script src="index1.js"></script>
+  </body>
+</html>
