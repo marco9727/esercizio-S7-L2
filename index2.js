@@ -9,6 +9,9 @@ function startCounter() {
   //"time_counter" è una chiave utilizzata per salvare e
   //recuperare il valore del contatore nella sessionStorage
   if (!counterValue) {
+    // questa è una forma concisa di gestire il caso in cui il valore della sessionStorage
+    //potrebbe non esistere o essere vuoto, in modo da fornire un valore di default.
+    // La logica è: "Se non c'è un valore (!counterValue è vero), inizializza a 0".
     sessionStorage.setItem("time_counter", 0);
     return 0;
     // stiamo impostando il valore 0 associato alla chiave nella session storage successsivamente
@@ -21,7 +24,6 @@ function startCounter() {
 //faccio una funzione dove il counter viene mostrato nel'HTMl
 //poi si imposta un intervalklo di 1000 millisecondi utilizzando set interval incrementando il contatore
 // lo salva nella session storage e aggiorna html
-
 function updateCounter() {
   const counterElement = document.getElementById("counter");
   let counter = startCounter();
@@ -32,6 +34,24 @@ function updateCounter() {
   }, 1000);
   sessionStorage.setItem("interval", interval);
 }
+//updateCounter: Questa funzione è responsabile dell'aggiornamento del
+//contatore ad ogni secondo. Esegue quanto segue:
+
+//Recupera l'elemento del DOM con l'id 'counter' e l'ID dell'intervallo memorizzato nella
+//sessionStorage.
+
+//Chiamando initializeCounter(), ottiene il valore corrente del contatore.
+
+//Utilizza la funzione setInterval per eseguire una callback ogni secondo.
+//All'interno di questa callback:
+
+//Incrementa il valore del contatore.
+
+//Salva il nuovo valore della sessionStorage per mantenerlo tra le pagine.
+
+//Aggiorna il testo dell'elemento del DOM con il nuovo valore del contatore.
+
+//Memorizza l'ID dell'intervallo nella sessionStorage per poterlo cancellare successivamente.
 
 //funzione per cancellare l'intervallo alla chiusura della pag.
 
@@ -47,4 +67,8 @@ window.onload = updateCounter;
 
 // Chiamata alla funzione di cancellazione dell'intervallo alla chiusura
 //della pagina
+//onbeforeunload è un evento del browser che si verifica prima che la finestra sia in procinto
+//di essere chiusa. utile per eseguire azioni o fornire un messaggio di avviso all'utente prima che
+//lasci la pag
+//quindi in questo caso fa si che prima che si chiude la pag fa cancellare il timer
 window.onbeforeunload = clearCounterInterval;
